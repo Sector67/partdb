@@ -1,0 +1,9 @@
+<form action="{{url_for('part_query')}}" method="get">
+    <select name="field">
+        <option value="drawer">Drawer</option>
+        <option value="partnum" selected>Part number</option>
+        <option value="description">Description</option>
+    </select>
+    <input type="text" name="query" id="query" value="{{query}}" />
+</form>
+

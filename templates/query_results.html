@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block body %}
+    {% include "query_form.html" %}
+    <table>
+        <tr>
+            <th>Drawer</th>
+            <th>Part no</th>
+            <th>Description</th>
+        </tr>
+        {% for result in results %}
+            <tr>
+                <td>{{result.drawer}}</td>
+                <td>{{result.partnum}}</td>
+                <td>{{result.description}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

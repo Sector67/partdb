@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Sector67 PartsDB</title>
+        <link rel=stylesheet type=text/css href="{{url_for('static', filename='style.css')}}">
+    </head>
+    <body>
+        <div class="page">
+            <div class="header">
+                <a href="{{url_for('index_query')}}"><h1>Sector67 Parts Database</h1></a>
+            </div>
+            {% for message in get_flashed_messages() %}
+                <div class="flash">{{message}}</div>
+            {% endfor %}
+
+            {% block body %}{% endblock %}
+        </div>
+    </body>
+</html>
