@@ -1,7 +1,7 @@
 # all the imports. ALL OF THEM
 import os
 import sqlite3
-from flask import Flask, g, render_template, jsonify, request
+from flask import Flask, g, render_template, jsonify, request, abort
 
 
 # create our app
@@ -62,6 +62,15 @@ def part_query():
     search_query = request.args.get('query')
 
     db = get_db()
-    parts = db.execute('select drawer, partnum, description from parts where instr({}, ?)'.format(search_field), (search_query,)).fetchall()
+    if search_field not in ['drawer', 'category', 'partnum', 'description']:
+        abort(400, "Invalid query field.")
+
+    SEL = 'SELECT drawer, category, partnum, description FROM parts'
+
+    if search_field == 'drawer':
+        parts = db.execute(f'{SEL} WHERE drawer = ?', (search_query,))
+    else:
+        parts = db.execute(f'{SEL} WHERE instr({search_field}, ?)',
+                           (search_query,)).fetchall()
     return render_template('query_results.html', results=parts)
 
