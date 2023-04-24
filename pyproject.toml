@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "partdb"
+version = "0.1.0"
+description = "Partdb is a webapp for querying the part to drawer mapping databases for the back-room sorters at Sector67."
+authors = ["Erin Marshall <erinzm@github>"]
+license = "GPLv3"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.7"
+flask = "^2.2.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
